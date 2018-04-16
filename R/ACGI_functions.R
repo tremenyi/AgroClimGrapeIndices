@@ -483,14 +483,14 @@ build_data_tbl <- function(time_df, tmax_data, tmin_data, rain_data, convert_tem
 build_data_tbl_for_generic_area <- function(time_df, tmax_data, tmin_data, rain_data, convert_temps_from_K_to_C = FALSE) {
   # Kelvin / Celsius correction
   temp_offset <- ifelse(convert_temps_from_K_to_C, 273.15, 0)
-  
+
   tbl <- time_df[as.numeric(pull(tmax_data, layer)),]
   tbl$layer <- pull(tmax_data, layer)
   tbl$object_ <- pull(tmax_data, object_)
   tbl$tasmax <- pull(tmax_data, mean) - temp_offset
   tbl$tasmin <- pull(tmin_data, mean) - temp_offset
   tbl$rain <- pull(rain_data, mean)
-  
+
   return(tbl)
 }
 
@@ -515,9 +515,9 @@ build_data_tbl_for_generic_area <- function(time_df, tmax_data, tmin_data, rain_
 #'
 #' @examples
 #' calc_GDD(24.12, 15.94, 10)
-calc_GDD <- function(T_max, T_min, T_base) {
+calc_GDD <- function(T_max, T_min, T_base, T_upper=1000) {
   GDD <- ((T_max + T_min) / 2) - T_base
-  GDD[GDD < 0] <- 0
+  GDD[GDD < 0 & GDD > T_upper] <- 0
   return(GDD)
 }
 
