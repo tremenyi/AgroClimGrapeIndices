@@ -538,7 +538,10 @@ calc_GDD <- function(T_max, T_min, T_base, T_upper=1000) {
 #' @param GDD_base_10  Vector of GDD values with \code{T_base} set to 10 degrees C
 #'
 #' @return Vector of weighted GDD values
+#' @export
 #'
+#' @examples
+#' calc_GDD_weighted(GDD_base_budb, GDD_base_leaf, GDD_base_10, params)
 calc_GDD_weighted <- function(GDD_base_budb, GDD_base_leaf, GDD_base_10, params) {
 
   # constants
