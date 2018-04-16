@@ -600,7 +600,7 @@ calc_GDD_weighted <- function(GDD_base_budb, GDD_base_leaf, GDD_base_10, params)
     GDD_weighted <- GDD_weighted[1:length(GDD_base_10)]
   }
 
-  GDD_weighted
+  return(GDD_weighted)
 }
 
 
