@@ -514,7 +514,8 @@ build_data_tbl_for_generic_area <- function(time_df, tmax_data, tmin_data, rain_
 #' @export
 #'
 #' @examples
-#' calc_GDD(24.12, 15.94, 10)
+#' calc_GDD(24.12, 15.94, 10) #no need to specify upper limit
+#' calc_GDD(24.12, 15.94, 10, 35) #but can specify an upper limit if desired
 calc_GDD <- function(T_max, T_min, T_base, T_upper=1000) {
   GDD <- ((T_max + T_min) / 2) - T_base
   GDD[GDD < 0 & GDD > T_upper] <- 0
