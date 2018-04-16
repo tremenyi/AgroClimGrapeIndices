@@ -2,7 +2,7 @@
 % Please edit documentation in R/ACGI_functions.R
 \name{find_last_date_under}
 \alias{find_last_date_under}
-\title{Find last date that value was under a particular threshold}
+\title{Find last date in series that value was under a particular threshold}
 \usage{
 find_last_date_under(df_dates, df_values, threshold)
 }
@@ -18,7 +18,7 @@ The item in the date vector which corresponds to the item in the values vector f
 If the value vector never drops below the threshold, then NA is returned.
 }
 \description{
-Find last date that value was under a particular threshold
+Find last date in series that value was under a particular threshold
 }
 \examples{
 df <- data.frame( date = seq(as.Date("1961-07-01"), as.Date("1961-07-31"), "days"),

@@ -2,25 +2,16 @@
 % Please edit documentation in R/ACGI_functions.R
 \name{is_Oct_to_Apr}
 \alias{is_Oct_to_Apr}
-\alias{is_Oct_to_Apr}
 \title{Is Austral Season Month October to April (Inclusive)}
 \usage{
-is_Oct_to_Apr(Austral_season_month)
-
 is_Oct_to_Apr(Austral_season_month)
 }
 \arguments{
 \item{Austral_season_month}{Number of the month in the Austral season calendar (where 1 is July, through to 12 is June)}
-
-\item{Austral_season_month}{Number of the month in the Austral season calendar (where 1 is July, through to 12 is June)}
 }
 \value{
 TRUE or FALSE; if the supplied month is within the target range
-
-TRUE or FALSE; if the supplied month is within the target range
 }
 \description{
-Determine if an Austral season month is between Oct and Apr inclusive
-
 Determine if an Austral season month is between Oct and Apr inclusive
 }

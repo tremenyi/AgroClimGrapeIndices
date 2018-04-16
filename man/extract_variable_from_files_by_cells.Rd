@@ -2,18 +2,18 @@
 % Please edit documentation in R/ACGI_functions.R
 \name{extract_variable_from_files_by_cells}
 \alias{extract_variable_from_files_by_cells}
-\title{Title}
+\title{Extract values from cells matching a particular domain from a list of NetCDF files}
 \usage{
 extract_variable_from_files_by_cells(target_files, target_domain,
   wine_region_polygon_cells_per_domain_lookup)
 }
 \arguments{
-\item{target_files}{List of input files}
+\item{target_files}{List of input NetCDF files}
 
 \item{target_domain}{The domain in the lookup object to get the matching cells for}
 
 \item{wine_region_polygon_cells_per_domain_lookup}{Pre-calculated lookup listing the cells that exist in each region for each domain}
 }
 \description{
-Title
+Extract values from cells matching a particular domain from a list of NetCDF files
 }

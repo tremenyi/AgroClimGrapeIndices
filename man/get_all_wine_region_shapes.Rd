@@ -10,6 +10,16 @@ get_all_wine_region_shapes(dir_with_mainland_shapes,
 \arguments{
 \item{target_bom_districts_tas}{List of regions to extract by label name, in the format list(..., c(prepend = TRUE,  label = "South East")) where prepend = TRUE will prepend 'Tasmania' to the label}
 }
+\value{
+Vector with mainland shapes and Tasmania shapes
+}
 \description{
 Get shapes for all wine regions (mainland and Tasmania)
+}
+\examples{
+target_shape_dir <- "/path/to/mainland_regions/"
+src_bom_district_shapes_tas <- "/path/to/bom_shape_file.shp"
+target_bom_districts_tas <- list(  # see .get_tasmania_shapes_from_bom_shape_file
+)
+shapes <- get_all_wine_region_shapes(target_shape_dir, src_bom_district_shapes_tas, target_bom_districts_tas)
 }

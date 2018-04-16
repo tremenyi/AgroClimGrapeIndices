@@ -17,3 +17,15 @@ A data frame with the full list of calculated indices and statistics grouped by 
 \description{
 Calculate agroclimatic grape indices from the given data table with the named param list
 }
+\examples{
+params <- c(base_budb = 3.5,
+            base_leaf = 7.1,
+            bracket_budb_leaf = 350,
+            bracket_leaf_pick = 1000,
+            DMT_threshold_pctile = 95,
+            climatology_start = 1962,
+            climatology_end = 1990,
+            min_duration = 3,
+            downy_mildew_threshold_temp = 10)
+                                                                                                )
+}

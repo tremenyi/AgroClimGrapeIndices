@@ -4,7 +4,7 @@
 \alias{downy_mildew_pressure_index}
 \title{Calculate Downy Mildew Pressure Index}
 \usage{
-downy_mildew_pressure_index(rain, T_max, T_min, T_threshold)
+downy_mildew_pressure_index(rain, T_max, T_min, T_threshold = 10)
 }
 \arguments{
 \item{rain}{Daily rainfall}
@@ -19,6 +19,21 @@ downy_mildew_pressure_index(rain, T_max, T_min, T_threshold)
 A logical vector specifying if the index was calculated to be TRUE of FALSE for the given data points
 }
 \description{
-Approximates temperature curve to be from `T_min` at start of day, rising linearly to linear rising to `T_max` at middle of day,
-and then falling linearly to `T_min` againt at the end of the day
+Calculates the Downy Mildew Pressure index for a set of daily
+rainfall and temperature min/max data. This is true if:
+there is a daily rainfall of > 10mm and the
+temperature is > 10 degrees C for more than 10 hours.
+}
+\details{
+Approximates temperature curve to be from \code{T_min} at start of day,
+rising linearly to linear rising to \code{T_max} at middle of day,
+and then falling linearly to \code{T_min} againt at the end of the day.
+
+The threshold value defaults to 10, but can be changed if necessary.
+}
+\examples{
+rain <- rnorm(n = 30, mean = 9, sd = 4)
+tmax <- rnorm(n = 30, mean = 12, sd = 4)
+tmin <- rnorm(n = 30, mean = 8, sd = 4)
+downy_mildew_pressure_index(rain, tmax, tmin)
 }

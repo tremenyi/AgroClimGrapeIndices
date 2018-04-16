@@ -2,16 +2,17 @@
 % Please edit documentation in R/ACGI_functions.R
 \name{combine_bom_region_collection}
 \alias{combine_bom_region_collection}
-\title{Combine a list of geometry objects into one multi-polygon}
+\title{Combine SF with multiple geometry objects into one}
 \usage{
-combine_bom_region_collection(sf_collection)
+combine_bom_region_collection(sf)
 }
 \arguments{
-\item{sf_collection}{}
+\item{sf}{Simple feature with multiple polygons stored in $geometry}
 }
 \value{
-
+The input simple feature, but with the polygons combined
 }
 \description{
-Combine a list of geometry objects into one multi-polygon
+Combine the geometry objects of simple feature with multiple polygons into one multi-polygon.
+Metadata such as Shape_Len and Shape_Area will be aggregated for the final polygon.
 }

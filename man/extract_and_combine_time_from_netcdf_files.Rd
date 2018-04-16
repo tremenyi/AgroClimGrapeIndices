@@ -7,14 +7,20 @@
 extract_and_combine_time_from_netcdf_files(nc_files_list)
 }
 \arguments{
-\item{nc_files_list}{A list of files you wish to combine together, but have independently defined "Time" variables.}
+\item{nc_files_list}{A list of files you wish to combine together, but have independently defined "time" variables.}
 }
 \value{
-Returns a vector of character strings in the form of "YYYY-MM-DD hh:mm:ss". This can then be used by POSIXct or POSIXlt to get date or time class objects.
+Returns a vector of character strings in the form of "YYYY-MM-DD hh:mm:ss".
+This can then be used by POSIXct or POSIXlt to get date or time class objects.
 }
 \description{
-Time handling in any file format is constanly a pain. It can be described in a range of different ways, relative to a range of different starting points.  For example, "Minutes since 1800-01-01 00:00:00", or "Seconds since 1960-01-01 00:00:00". This tool is a wrapper around RNetCDF tools that extract and transform the time representation in netcdf files into a useable, standard reference, human readable format.
+Time handling in any file format is constanly a pain. It can be described
+in a range of different ways, relative to a range of different starting points.
+For example, "Minutes since 1800-01-01 00:00:00", or "Seconds since 1960-01-01 00:00:00".
+This tool is a wrapper around RNetCDF tools that extract and transform the time
+representation in netcdf files into a useable, standard reference, human readable format.
 }
 \examples{
-#I need to put in an example...
+files <- dir(path = "/path/to/nc/files/", pattern = "*.nc", full.names = TRUE)
+ts <- extract_and_combine_time_from_netcdf_files(files)
 }

@@ -2,13 +2,16 @@
 % Please edit documentation in R/ACGI_functions.R
 \name{extract_geom_for_shapes}
 \alias{extract_geom_for_shapes}
-\title{Extract geometry from list of shapes}
+\title{Extract geometry from vector of shapes}
 \usage{
-extract_geom_for_shapes(shapes_list)
+extract_geom_for_shapes(shapes)
 }
 \arguments{
-\item{shapes_list}{}
+\item{shapes}{Shapes to process}
+}
+\value{
+Vector of same length as input, with just the st_geometry of each shape for each item
 }
 \description{
-Extract geometry from list of shapes
+Extract geometry from vector of shapes
 }

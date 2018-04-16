@@ -4,7 +4,7 @@
 \alias{calc_GDD}
 \title{Calculate Growing Degree Days}
 \usage{
-calc_GDD(T_max, T_min, T_base)
+calc_GDD(T_max, T_min, T_base, T_upper = 1000)
 }
 \arguments{
 \item{T_max}{Daily Maximum Temperature}
@@ -24,5 +24,6 @@ base temperature. Results with negative values are set
 to zero (rather than having a 'negative' GDD).
 }
 \examples{
-calc_GDD(24.12, 15.94, 10)
+calc_GDD(24.12, 15.94, 10) #no need to specify upper limit
+calc_GDD(24.12, 15.94, 10, 35) #but can specify an upper limit if desired
 }

@@ -4,7 +4,9 @@
 \alias{calc_GDD_weighted}
 \title{Calculate Weighted Growing Degree Days}
 \usage{
-calc_GDD_weighted(GDD_base_budb, GDD_base_leaf, GDD_base_10, params)
+calc_GDD_weighted(T_max, T_min, T_budb = 4, T_leaf = 7, T_vera = 10,
+  T_upper = 1000, GDD_budb_threshold = 350, GDD_leaf_threshold = 1000,
+  GDD_harvest_threshold = 1300)
 }
 \arguments{
 \item{GDD_base_budb}{Vector of GDD values with \code{T_base} as the budbreak base temperature}
@@ -19,8 +21,11 @@ Vector of weighted GDD values
 \description{
 Calculates the cumulative weighted GDD where:
 \itemize{
-  \item{\code{GDD_base_budb} is used when cumulative GDD (x) meets: \code{0 < x < params[["bracket_budb_leaf"]]}}
-  \item{\code{GDD_base_leaf} is used when cumulative GDD (x) meets: \code{params[["bracket_budb_leaf"]] < x < params[["bracket_leaf_pick"]]}}
-  \item{\code{GDD_base_10} is used when cumulative GDD (x) meets: \code{x > params[["bracket_leaf_pick"]]}}
+  \item{\code{GDD_base_budb} is used when cumulative GDD (x) meets: \code{0 < x < params[["GDD_budb_threshold"]]}}
+  \item{\code{GDD_base_leaf} is used when cumulative GDD (x) meets: \code{params[["GDD_budb_threshold"]] < x < params[["GDD_leaf_threshold"]]}}
+  \item{\code{GDD_base_10} is used when cumulative GDD (x) meets: \code{x > params[["GDD_leaf_threshold"]]}}
 }
+}
+\examples{
+calc_GDD_weighted(GDD_base_budb, GDD_base_leaf, GDD_base_10, params)
 }
