@@ -523,14 +523,13 @@ calc_GDD <- function(T_max, T_min, T_base, T_upper=1000) {
 }
 
 
-
 #' Calculate Weighted Growing Degree Days
 #'
 #' Calculates the cumulative weighted GDD where:
 #' \itemize{
-#'   \item{\code{GDD_base_budb} is used when cumulative GDD (x) meets: \code{0 < x < params[["bracket_budb_leaf"]]}}
-#'   \item{\code{GDD_base_leaf} is used when cumulative GDD (x) meets: \code{params[["bracket_budb_leaf"]] < x < params[["bracket_leaf_pick"]]}}
-#'   \item{\code{GDD_base_10} is used when cumulative GDD (x) meets: \code{x > params[["bracket_leaf_pick"]]}}
+#'   \item{\code{GDD_base_budb} is used when cumulative GDD (x) meets: \code{0 < x < params[["GDD_budb_threshold"]]}}
+#'   \item{\code{GDD_base_leaf} is used when cumulative GDD (x) meets: \code{params[["GDD_budb_threshold"]] < x < params[["GDD_leaf_threshold"]]}}
+#'   \item{\code{GDD_base_10} is used when cumulative GDD (x) meets: \code{x > params[["GDD_leaf_threshold"]]}}
 #' }
 #'
 #' @param GDD_base_budb Vector of GDD values with \code{T_base} as the budbreak base temperature
@@ -542,7 +541,7 @@ calc_GDD <- function(T_max, T_min, T_base, T_upper=1000) {
 #'
 #' @examples
 #' calc_GDD_weighted(GDD_base_budb, GDD_base_leaf, GDD_base_10, params)
-calc_GDD_weighted <- function(T_max, Tmin, T_budb=4, T_leaf=7, T_vera=10, T_upper=1000, GDD_budb_threshold=350, GDD_leaf_threshold=1000, GDD_harvest_threshold=1300){
+calc_GDD_weighted <- function(T_max, T_min, T_budb=4, T_leaf=7, T_vera=10, T_upper=1000, GDD_budb_threshold=350, GDD_leaf_threshold=1000, GDD_harvest_threshold=1300){
   GDD_base_budb <- calc_GDD(T_max, T_min, T_base = T_budb, T_upper = T_upper)
   GDD_base_leaf <- calc_GDD(T_max, T_min, T_base = T_leaf, T_upper = T_upper)
   GDD_base_vera <- calc_GDD(T_max, T_min, T_base = T_vera, T_upper = T_upper)
@@ -1159,7 +1158,22 @@ calc_stats_by_area_year <- function(x, params) {
 
   # Accumulated Heat / Season Growing Degree Day Tallies
 
-  GDD_season_weighted <- calc_GDD_weighted(GDD_base_budb, GDD_base_leaf, GDD_base_10, params)
+  GDD_season_weighted_Shiraz <- calc_GDD_weighted(
+    T_max = x$tasmax, T_min = x$tasmin,
+    T_budb = 4.5, T_leaf = 7.5, T_vera = 10, T_upper = 35,
+    GDD_budb_threshold = 350, GDD_leaf_threshold = 1000, GDD_harvest_threshold = 1300
+    )
+  GDD_season_weighted_Semillion <- calc_GDD_weighted(
+    T_max = x$tasmax, T_min = x$tasmin,
+    T_budb = 2.5, T_leaf = 8, T_vera = 10, T_upper = 35,
+    GDD_budb_threshold = 350, GDD_leaf_threshold = 1000, GDD_harvest_threshold = 1300
+  )
+  GDD_season_weighted_Pinot_Noir <- calc_GDD_weighted(
+    T_max = x$tasmax, T_min = x$tasmin,
+    T_budb = 4, T_leaf = 7, T_vera = 10, T_upper = 27,
+    GDD_budb_threshold = 350, GDD_leaf_threshold = 1000, GDD_harvest_threshold = 1300
+  )
+
 
   GDD_season_base10_from_Jul <- calc_accumulated_heat(x, GDD_base_10, from_Austral_month = 1)
   GDD_season_base10_from_Aug <- calc_accumulated_heat(x, GDD_base_10, from_Austral_month = 2)
