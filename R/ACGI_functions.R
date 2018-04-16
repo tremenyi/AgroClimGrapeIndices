@@ -540,7 +540,7 @@ calc_GDD <- function(T_max, T_min, T_base, T_upper=1000) {
 #' @export
 #'
 #' @examples
-#' calc_GDD_weighted(GDD_base_budb, GDD_base_leaf, GDD_base_10, params)
+#' calc_GDD_weighted(put in some details Tom...)
 calc_GDD_weighted <- function(T_max, T_min, T_budb=4, T_leaf=7, T_vera=10, T_upper=1000, GDD_budb_threshold=350, GDD_leaf_threshold=1000, GDD_harvest_threshold=1300){
   GDD_base_budb <- calc_GDD(T_max, T_min, T_base = T_budb, T_upper = T_upper)
   GDD_base_leaf <- calc_GDD(T_max, T_min, T_base = T_leaf, T_upper = T_upper)
